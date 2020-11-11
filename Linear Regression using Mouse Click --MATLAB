@@ -1,0 +1,31 @@
+clc
+clear all
+close all
+warning off
+a=input('Enter , how many times you want to run the same code:');
+x=[];
+y=[];
+h=0;
+xa=-10:0.01:10;
+for i=1:a
+    axis([-10 10 -10 10]);
+    [m,n]=ginput(1);
+    x=[x m];
+    y=[y n];
+    plot(x,y,'bo','linewidth',6);
+    if(length(x)>2)
+    delete(h);
+    end
+    axis([-10 10 -10 10]);
+    if(length(x)>1)
+    a=[];
+for i=1:length(x)
+    a=[a ; x(i) 1];
+end
+ c =a\y';
+yR = c(1)*xa + c(2); % the fitted line
+hold on;
+h=plot(xa,yR,'k','linewidth',2);
+axis([-10 10 -10 10]);
+    end
+end
